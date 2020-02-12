@@ -82,6 +82,7 @@ public class ScannerModule {
   }
 
   private boolean isExtensionSupported(FileLayoutInfo fileLayoutInfo) {
+    LOG.error("isExtensionSupported: {}", fileLayoutInfo);
     if (fileLayoutInfo == null) {
       return false;
     }
@@ -95,6 +96,8 @@ public class ScannerModule {
       LOG.debug("Skip updating properties for already scanned artifact: {}", repoPath);
       return;
     }
+
+    LOG.error(testResult.packageManager);
 
     StringBuilder snykIssueUrl = new StringBuilder("https://snyk.io/vuln/");
     if ("maven".equals(testResult.packageManager)) {
